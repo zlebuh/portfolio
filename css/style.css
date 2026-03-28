@@ -455,6 +455,7 @@ footer {
   }
   .hero-name { font-size: clamp(36px, 8vw, 52px); }
   .hero-desc { font-size: 16px; }
+  .hero-desc, .hero-cta { margin-left: auto; margin-right: auto; }
   .profile-header {
     flex-direction: row; align-items: center; gap: 14px; justify-content: center;
   }
