@@ -44,6 +44,19 @@ var translations = {
     "exp.freelance.role": "Backend vývojář",
     "exp.freelance.desc": "Dodal API integrace a backendové systémy pro 8 klientů z oblastí e-commerce, SaaS a fintech.",
 
+    // Education
+    "edu.label": "// Vzdělání",
+    "edu.title": "Vzdělání",
+    "edu.master.school": "Název univerzity",
+    "edu.master.degree": "Magisterský titul v oboru informatika",
+    "edu.master.desc": "Téma diplomové práce a klíčové oblasti studia. Doplňte své údaje.",
+    "edu.bachelor.school": "Název univerzity",
+    "edu.bachelor.degree": "Bakalářský titul v oboru informatika",
+    "edu.bachelor.desc": "Téma bakalářské práce a klíčové oblasti studia. Doplňte své údaje.",
+    "edu.grammar.school": "Název gymnázia",
+    "edu.grammar.field": "Všeobecné studium",
+    "edu.grammar.desc": "Stručný popis zaměření nebo úspěchů. Doplňte své údaje.",
+
     // Contact
     "contact.label": "// Pojďme si promluvit",
     "contact.heading": "Máte projekt<br>na <em>mysli?</em>",

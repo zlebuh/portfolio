@@ -343,6 +343,14 @@ section + section { border-top: 1px solid var(--border); }
 }
 .timeline-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
+.subsection-header { margin-top: 48px; margin-bottom: 32px; }
+.subsection-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
 /* CONTACT */
 #contact { padding-bottom: 100px; }
 .contact-inner {
@@ -445,6 +453,7 @@ footer {
   .hero-desc { font-size: 16px; }
 
   .section-title { font-size: 28px; }
+  .subsection-title { font-size: 22px; }
 
   .projects-grid { grid-template-columns: 1fr; }
   .project-card.featured {
