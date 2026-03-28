@@ -1,0 +1,70 @@
+<div class="section-header">
+  <div>
+    <div class="section-label">// Selected work</div>
+    <h2 class="section-title">Projects</h2>
+  </div>
+  <a href="#" class="see-all">All projects &rarr;</a>
+</div>
+
+<div class="projects-grid">
+
+  <a href="#" class="project-card featured">
+    <div>
+      <div class="project-meta">
+        <span class="project-type">Featured</span>
+        <div class="project-link-icon">&nearr;</div>
+      </div>
+      <h3 class="project-title">Distributed Task Queue Engine</h3>
+      <p class="project-desc">A high-throughput, fault-tolerant task queue built with Go and Redis. Handles 50k+ jobs/sec with at-least-once delivery guarantees, distributed worker pools, and real-time observability dashboards.</p>
+      <div class="project-tags">
+        <span class="tag">Go</span>
+        <span class="tag">Redis</span>
+        <span class="tag">gRPC</span>
+        <span class="tag">Prometheus</span>
+        <span class="tag">Docker</span>
+      </div>
+    </div>
+    <div class="project-visual">
+      <div class="project-visual-code">
+        <span class="code-green">func</span> <span class="code-blue">ProcessJob</span>(ctx context.Context,<br>
+        &nbsp;&nbsp;job *<span class="code-orange">Job</span>) error {<br>
+        &nbsp;&nbsp;<span class="code-green">if</span> err := q.validate(job); err != <span class="code-green">nil</span> {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-green">return</span> fmt.Errorf(<span class="code-orange">"invalid: %w"</span>, err)<br>
+        &nbsp;&nbsp;}<br>
+        &nbsp;&nbsp;<span class="code-green">return</span> q.worker.Dispatch(ctx, job)<br>
+        }
+      </div>
+    </div>
+  </a>
+
+  <a href="#" class="project-card">
+    <div class="project-meta">
+      <span class="project-type">API</span>
+      <div class="project-link-icon">&nearr;</div>
+    </div>
+    <h3 class="project-title">Auth Microservice</h3>
+    <p class="project-desc">Zero-dependency JWT auth service with OAuth2, refresh token rotation, and rate limiting. Used in production by 3 products.</p>
+    <div class="project-tags">
+      <span class="tag">Python</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">JWT</span>
+      <span class="tag">PostgreSQL</span>
+    </div>
+  </a>
+
+  <a href="#" class="project-card">
+    <div class="project-meta">
+      <span class="project-type">Infrastructure</span>
+      <div class="project-link-icon">&nearr;</div>
+    </div>
+    <h3 class="project-title">DB Migration CLI</h3>
+    <p class="project-desc">Developer-friendly schema migration tool with dry-run mode, rollback support, and CI/CD integration out of the box.</p>
+    <div class="project-tags">
+      <span class="tag">Go</span>
+      <span class="tag">PostgreSQL</span>
+      <span class="tag">MySQL</span>
+      <span class="tag">CLI</span>
+    </div>
+  </a>
+
+</div>
