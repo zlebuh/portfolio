@@ -351,3 +351,46 @@ footer {
 .footer-links { display: flex; gap: 24px; }
 .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; }
 .footer-links a:hover { color: var(--text); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .container { padding: 0 20px; }
+
+  section { padding: 60px 0; }
+
+  #hero {
+    padding: 100px 0 60px;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .hero-name { font-size: clamp(36px, 8vw, 52px); }
+  .hero-desc { font-size: 16px; }
+
+  .section-title { font-size: 28px; }
+
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-card.featured {
+    grid-column: span 1;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .contact-inner {
+    grid-template-columns: 1fr;
+    padding: 32px;
+    gap: 32px;
+  }
+  .contact-heading { font-size: 28px; }
+
+  footer {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
