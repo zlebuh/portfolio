@@ -57,6 +57,12 @@ var translations = {
     "edu.grammar.field": "Všeobecné studium",
     "edu.grammar.desc": "Stručný popis zaměření nebo úspěchů. Doplňte své údaje.",
 
+    // About
+    "about.label": "// Osobní",
+    "about.title": "Nejen kód",
+    "about.intro": "Žiji s manželkou, dcerou a naším psem v malém městě v Česku. Máme dům se zahradou, která mě drží při zemi — někdy doslova, když je potřeba posekat trávník.",
+    "about.hobbies": "Sport byl vždycky velkou součástí mého života a jsem zarytý fanoušek Liverpool FC — YNWA, bez výjimek. Když zrovna nesleduji zápas nebo nesportuji, najdete mě u dobré knížky nebo jak ladím chytrou domácnost. Ukazuje se, že inženýra můžete vytáhnout z kódu, ale nezabráníte mu optimalizovat osvětlení v obýváku.",
+
     // Contact
     "contact.label": "// Pojďme si promluvit",
     "contact.heading": "Máte projekt<br>na <em>mysli?</em>",
