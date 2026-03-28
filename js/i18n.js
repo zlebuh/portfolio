@@ -41,7 +41,7 @@ var translations = {
     "exp.thermofisher.desc": "Vývoj interní aplikace pro konfiguraci digitálního dvojčete elektronového mikroskopu. Mám částečný ownership nad produktem a zároveň mentoruji juniorní vývojáře.",
     "exp.edhouse.present": "2023 \u2014 dosud",
     "exp.edhouse.role": "Vývojář algoritmů, Backend vývojář",
-    "exp.edhouse.desc": "Pro energetický startup jsem vyvíjel algoritmus pro optimální řízení nabíjení baterie a prodeje přetoků vzhledem k predikované spotřebě a výkonu fotovoltaické elektrárny.",
+    "exp.edhouse.desc": "Pro energetický startup jsem vyvíjel algoritmus pro optimální řízení nabíjení baterie a prodeje přetoků vzhledem k predikované spotřebě, výkonu fotovoltaické elektrárny a spotovým cenám.",
     "exp.solvertech.role": "Vývojář algoritmů, Backend vývojář",
     "exp.solvertech.desc": "Vývoj optimalizačních algoritmů pro úlohu Vehicle Routing Problem.",
 
