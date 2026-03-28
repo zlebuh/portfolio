@@ -354,8 +354,11 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+  html { overflow-x: hidden; }
+  body { width: 100%; overflow-x: hidden; }
   nav { padding: 0 20px; }
   .container { padding: 0 20px; }
+  .project-visual-code { font-size: 11px; word-break: break-all; }
 
   section { padding: 60px 0; }
 
@@ -383,9 +386,13 @@ footer {
 
   .contact-inner {
     grid-template-columns: 1fr;
-    padding: 32px;
+    padding: 24px;
     gap: 32px;
+    align-items: stretch;
+    border-radius: 14px;
   }
+  .contact-link { min-width: 0; }
+  .contact-link-value { display: none; }
   .contact-heading { font-size: 28px; }
 
   footer {
