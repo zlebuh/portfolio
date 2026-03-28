@@ -1,3 +1,9 @@
+/* Theme: apply saved preference immediately to avoid flash */
+(function () {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+})();
+
 document.querySelectorAll('[data-section]').forEach(function (el) {
   var file = 'sections/' + el.getAttribute('data-section') + '.html';
   fetch(file)
@@ -26,6 +32,23 @@ document.querySelectorAll('[data-section]').forEach(function (el) {
     if (e.target.tagName === 'A') {
       navLinks.classList.remove('open');
       nav.classList.remove('open');
+    }
+  });
+})();
+
+/* Theme toggle */
+(function () {
+  var toggle = document.querySelector('.theme-toggle');
+  if (!toggle) return;
+
+  toggle.addEventListener('click', function () {
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.removeItem('theme');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
     }
   });
 })();
