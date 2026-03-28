@@ -112,7 +112,7 @@ section + section { border-top: 1px solid var(--border); }
   background: var(--text); color: white;
   padding: 12px 28px; border-radius: 6px;
   font-size: 15px; font-weight: 500;
-  text-decoration: none; transition: background 0.2s, transform 0.15s;
+  text-decoration: none; transition: background-color 0.2s, transform 0.15s;
   display: inline-block;
 }
 .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
@@ -306,7 +306,7 @@ section + section { border-top: 1px solid var(--border); }
   color: var(--text); text-decoration: none;
   font-size: 15px; padding: 14px 18px;
   border: 1px solid var(--border); border-radius: 10px;
-  transition: border-color 0.2s, background 0.2s;
+  transition: border-color 0.2s, background-color 0.2s;
 }
 .contact-link:hover { border-color: var(--accent-mid); background: var(--accent-light); }
 .contact-link-icon {
@@ -333,7 +333,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   border: none; padding: 14px 28px; border-radius: 8px;
   font-family: 'DM Sans', sans-serif;
   font-size: 15px; font-weight: 500; cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
+  transition: background-color 0.2s, transform 0.15s;
   align-self: flex-start;
 }
 .btn-send:hover { background: #1F4533; transform: translateY(-1px); }
