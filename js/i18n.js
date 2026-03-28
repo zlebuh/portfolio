@@ -36,14 +36,14 @@ var translations = {
     // Experience
     "exp.label": "// Kariéra",
     "exp.title": "Zkušenosti",
-    "exp.acme.present": "2022 \u2014 dosud",
-    "exp.acme.role": "Senior backend inženýr",
-    "exp.acme.desc": "Vedl re-architekturu platební platformy, snížení p99 latence o 60 %. Navrhl a postavil interní datový pipeline zpracovávající 2M+ událostí/den. Mentoroval 3 juniorní vývojáře.",
-    "exp.startup.role": "Backend vývojář",
-    "exp.startup.desc": "Vytvářel REST a GraphQL API obsluhující 100k+ denních aktivních uživatelů. Zodpovědný za notifikační systém a integrace s externími poskytovateli. Zvýšil pokrytí testy ze 40 % na 85 %.",
-    "exp.freelance.company": "Na volné noze",
-    "exp.freelance.role": "Backend vývojář",
-    "exp.freelance.desc": "Dodal API integrace a backendové systémy pro 8 klientů z oblastí e-commerce, SaaS a fintech.",
+    "exp.thermofisher.present": "2023 \u2014 dosud",
+    "exp.thermofisher.role": "Senior SW inženýr",
+    "exp.thermofisher.desc": "Vývoj interní aplikace pro konfiguraci digitálního dvojčete elektronového mikroskopu. Mám částečný ownership nad produktem a zároveň mentoruji juniorní vývojáře.",
+    "exp.edhouse.present": "2023 \u2014 dosud",
+    "exp.edhouse.role": "Vývojář algoritmů, Backend vývojář",
+    "exp.edhouse.desc": "Pro energetický startup jsem vyvíjel algoritmus pro optimální řízení nabíjení baterie a prodeje přetoků vzhledem k predikované spotřebě a výkonu fotovoltaické elektrárny.",
+    "exp.solvertech.role": "Vývojář algoritmů, Backend vývojář",
+    "exp.solvertech.desc": "Vývoj optimalizačních algoritmů pro úlohu Vehicle Routing Problem.",
 
     // Education
     "edu.label": "// Vzdělání",
@@ -60,14 +60,14 @@ var translations = {
 
     // About
     "about.label": "// Osobní",
-    "about.title": "Nejen kód",
-    "about.intro": "Žiji s manželkou, dcerou a naším psem v malém městě v Česku. Máme dům se zahradou, která mě drží při zemi — někdy doslova, když je potřeba posekat trávník.",
-    "about.hobbies": "Sport byl vždycky velkou součástí mého života a jsem zarytý fanoušek Liverpool FC — YNWA, bez výjimek. Když zrovna nesleduji zápas nebo nesportuji, najdete mě u dobré knížky nebo jak ladím chytrou domácnost. Ukazuje se, že inženýra můžete vytáhnout z kódu, ale nezabráníte mu optimalizovat osvětlení v obýváku.",
+    "about.title": "Nejen práce",
+    "about.intro": "Žiji s manželkou, dcerou a naším psem v malém městě v Česku. Máme dům se zahradou a s tím i nekonečný backlog, který mě chrání před ztrátou chuti k práci v kanceláři.",
+    "about.hobbies": "Sport byl vždycky velkou součástí mého života a jsem zarytý fanoušek fotbalového Liverpoolu — YNWA. Když zrovna nesleduji zápas nebo nesportuji, najdete mě u dobré knížky, s kytarou u táboráku nebo jak vylepšuji naši chytrou domácnost.",
 
     // Contact
     "contact.label": "// Pojďme si promluvit",
-    "contact.heading": "Máte projekt<br>na <em>mysli?</em>",
-    "contact.sub": "Otevřený novým rolím, freelance práci a zajímavým vedlejším projektům. Odpovídám do 24 hodin.",
+    "contact.heading": "Napadlo Vás <em>něco?</em>",
+    "contact.sub": "Jsem otevřený novým rolím, freelance práci a zajímavým vedlejším projektům.",
     "contact.formName": "Jméno",
     "contact.formEmail": "E-mail",
     "contact.formMessage": "Zpráva",
