@@ -168,6 +168,14 @@ section + section { border-top: 1px solid var(--border); }
   font-weight: 300;
   max-width: 460px;
   line-height: 1.6;
+  margin-bottom: 16px;
+}
+.hero-ai-note {
+  font-size: 16px;
+  color: var(--muted);
+  font-weight: 300;
+  max-width: 460px;
+  line-height: 1.6;
   margin-bottom: 40px;
 }
 .hero-actions { display: flex; gap: 16px; align-items: center; }
@@ -198,10 +206,7 @@ section + section { border-top: 1px solid var(--border); }
 }
 .avatar {
   width: 52px; height: 52px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--avatar-from) 0%, var(--avatar-to) 100%);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'DM Serif Display', serif;
-  font-size: 20px; color: var(--accent);
+  object-fit: cover;
 }
 .hero-card-name { font-weight: 500; font-size: 15px; }
 .hero-card-role { font-size: 13px; color: var(--muted); }

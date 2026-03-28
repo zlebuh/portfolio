@@ -11,13 +11,13 @@ var translations = {
     "footer.resume": "Životopis",
 
     // Hero
-    "hero.available": "Dostupný pro nové příležitosti",
-    "hero.desc": "Backend vývojář tvořící škálovatelné systémy a čistá API. Komplexní problémy měním na elegantní, produkčně připravená řešení.",
+    "hero.desc": "Softwarový inženýr, který staví produkty od začátku do konce. Od prvního prototypu po produkci — backend, frontend, mobilní aplikace, nasazení. Pomáhám startupům rychle posouvat věci vpřed a dodávat MVP, která fungují.",
     "hero.viewProjects": "Zobrazit projekty",
     "hero.getInTouch": "Kontaktujte mě",
-    "hero.cardRole": "Backend vývojář",
+    "hero.cardRole": "Softwarový inženýr",
+    "hero.aiNote": "Nejsem vibecoder. Mám 5+ let praxe ve vývoji. AI používám, abych extrémně zvýšil svou efektivitu — ne abych nechal celou aplikaci naslepo vygenerovat.",
     "hero.yearsLabel": "Let zkušeností",
-    "hero.projectsLabel": "Dodaných projektů",
+
 
     // Projects
     "projects.label": "// Vybraná práce",
@@ -67,7 +67,7 @@ var translations = {
     // Contact
     "contact.label": "// Pojďme si promluvit",
     "contact.heading": "Napadlo Vás <em>něco?</em>",
-    "contact.sub": "Jsem otevřený novým rolím, freelance práci a zajímavým vedlejším projektům.",
+    "contact.sub": "Máte nápad na startup nebo potřebujete postavit MVP? Vezmu projekt od konceptu až po spuštění. Ozvěte se.",
     "contact.formName": "Jméno",
     "contact.formEmail": "E-mail",
     "contact.formMessage": "Zpráva",
