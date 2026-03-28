@@ -8,7 +8,7 @@ var translations = {
 
     // Footer
     "footer.copy": "\u00a9 2026 Petr Žlebek. Vytvořeno s péčí.",
-    "footer.resume": "Životopis",
+
 
     // Hero
     "hero.desc": "Softwarový inženýr, který staví produkty od začátku do konce. Od prvního prototypu po produkci — backend, frontend, mobilní aplikace, nasazení. Pomáhám startupům rychle posouvat věci vpřed a dodávat MVP, která fungují.",
@@ -22,16 +22,7 @@ var translations = {
     // Projects
     "projects.label": "// Vybraná práce",
     "projects.title": "Projekty",
-    "projects.allLink": "Všechny projekty",
-    "projects.featuredType": "Hlavní",
-    "projects.featuredTitle": "Distribuovaný systém front úloh",
-    "projects.featuredDesc": "Vysoce výkonná, odolná fronta úloh postavená na Go a Redis. Zpracuje 50 000+ úloh/s s garancí at-least-once doručení, distribuovanými worker pooly a real-time dashboardy.",
-    "projects.apiType": "API",
-    "projects.authTitle": "Auth mikroslužba",
-    "projects.authDesc": "JWT autentizační služba bez závislostí s OAuth2, rotací refresh tokenů a rate limitingem. Používaná v produkci 3 produkty.",
-    "projects.infraType": "Infrastruktura",
-    "projects.dbTitle": "CLI pro migrace databáze",
-    "projects.dbDesc": "Vývojářsky přívětivý nástroj pro migrace schématu s dry-run režimem, podporou rollbacku a CI/CD integrací.",
+    "projects.placeholder": "Referenční projekty již brzy. Zůstaňte naladěni.",
 
     // Experience
     "exp.label": "// Kariéra",
