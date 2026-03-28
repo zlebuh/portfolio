@@ -3,10 +3,11 @@ var translations = {
     // Nav
     "nav.projects": "Projekty",
     "nav.experience": "Zkušenosti",
+    "nav.about": "O mně",
     "nav.contact": "Kontakt",
 
     // Footer
-    "footer.copy": "\u00a9 2026 John Doe. Vytvořeno s péčí.",
+    "footer.copy": "\u00a9 2026 Petr Žlebek. Vytvořeno s péčí.",
     "footer.resume": "Životopis",
 
     // Hero
@@ -47,15 +48,15 @@ var translations = {
     // Education
     "edu.label": "// Vzdělání",
     "edu.title": "Vzdělání",
-    "edu.master.school": "Název univerzity",
-    "edu.master.degree": "Magisterský titul v oboru informatika",
-    "edu.master.desc": "Téma diplomové práce a klíčové oblasti studia. Doplňte své údaje.",
-    "edu.bachelor.school": "Název univerzity",
-    "edu.bachelor.degree": "Bakalářský titul v oboru informatika",
-    "edu.bachelor.desc": "Téma bakalářské práce a klíčové oblasti studia. Doplňte své údaje.",
-    "edu.grammar.school": "Název gymnázia",
+    "edu.master.school": "Vysoké učení technické Brno, Fakulta strojního inženýrství",
+    "edu.master.degree": "Inženýrský titul v oboru Aplikovaná informatika a řízení",
+    "edu.master.desc": "Téma diplomové práce: Hra Sokoban a umělá inteligence. Implementace algoritmů umělé inteligence pro řešení hlavolamové hry Sokoban ('skladník' posouvající bedýnky).",
+    "edu.bachelor.school": "Vysoké učení technické Brno, Fakulta strojního inženýrství",
+    "edu.bachelor.degree": "Bakalářský titul v oboru Matematické inženýrství",
+    "edu.bachelor.desc": "Téma bakalářské práce: Dopravní modely a jejich aplikace. Implementace algoritmů operačního výzkumu při hledání optimálního rozložení zařízení na zpracování odpadu v rámci svozové sítě.",
+    "edu.grammar.school": "Gymnázium Františka Palackého Valašské Meziříčí",
     "edu.grammar.field": "Všeobecné studium",
-    "edu.grammar.desc": "Stručný popis zaměření nebo úspěchů. Doplňte své údaje.",
+    "edu.grammar.desc": "Na gymnáziu jsem vždy prospěl s vyznamenáním. Už zde začala má cesta coby programátora díky volitelnému předmětu programování, ze kterého jsem nakonec i maturoval.",
 
     // About
     "about.label": "// Osobní",
