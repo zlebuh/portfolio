@@ -65,7 +65,10 @@ var translations = {
     "contact.namePlaceholder": "Vaše jméno",
     "contact.emailPlaceholder": "vas@email.cz",
     "contact.messagePlaceholder": "Řekněte mi o vašem projektu\u2026",
-    "contact.send": "Odeslat zprávu"
+    "contact.send": "Odeslat zprávu",
+    "contact.sending": "Odesílám\u2026",
+    "contact.success": "Zpráva odeslána! Ozvu se co nejdříve.",
+    "contact.error": "Něco se pokazilo. Zkuste to znovu nebo napište přímo na email."
   }
 };
 

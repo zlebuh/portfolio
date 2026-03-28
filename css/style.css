@@ -427,6 +427,12 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   align-self: flex-start;
 }
 .btn-send:hover { background: var(--accent-dark); transform: translateY(-1px); }
+.btn-send:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.form-status { font-size: 14px; line-height: 1.5; min-height: 0; }
+.form-status:empty { display: none; }
+.form-status-success { color: var(--accent); }
+.form-status-error { color: #c45; }
 
 /* FOOTER */
 footer {
