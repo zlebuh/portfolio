@@ -28,6 +28,7 @@ body {
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   background: rgba(248, 247, 244, 0.85);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   padding: 0 40px;
@@ -71,7 +72,6 @@ section + section { border-top: 1px solid var(--border); }
   gap: 60px;
   align-items: end;
 }
-.hero-left {}
 .hero-availability {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--accent-light); border: 1px solid #C5DDD3;
@@ -124,7 +124,6 @@ section + section { border-top: 1px solid var(--border); }
 .btn-ghost:hover { color: var(--text); }
 .btn-ghost-arrow { font-size: 18px; }
 
-.hero-right {}
 .hero-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -252,7 +251,7 @@ section + section { border-top: 1px solid var(--border); }
 /* EXPERIENCE */
 #experience .section-header { margin-bottom: 48px; }
 
-.timeline { display: flex; flex-direction: column; gap: 0; }
+.timeline { display: flex; flex-direction: column; }
 .timeline-item {
   display: grid; grid-template-columns: 160px 1fr;
   gap: 32px; padding: 32px 0;
@@ -260,13 +259,11 @@ section + section { border-top: 1px solid var(--border); }
   position: relative;
 }
 .timeline-item:last-child { border-bottom: none; }
-.timeline-left {}
 .timeline-year {
   font-family: 'DM Mono', monospace;
   font-size: 12px; color: var(--muted);
   padding-top: 4px;
 }
-.timeline-right {}
 .timeline-company {
   font-size: 13px; color: var(--accent);
   font-family: 'DM Mono', monospace;
