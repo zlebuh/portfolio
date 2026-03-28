@@ -41,7 +41,7 @@ for (var i = 0; i < sections.length; i++) {
 
 Promise.all(promises).then(function () {
   applyTranslations(currentLang);
-  initContactForm();
+  initCopyEmail();
 });
 
 /* Hamburger menu toggle */
@@ -94,59 +94,39 @@ Promise.all(promises).then(function () {
   });
 })();
 
-/* Contact form — JS fetch submission */
-function initContactForm() {
-  var form = document.getElementById('contact-form');
-  if (!form) return;
+/* Copy email to clipboard */
+function initCopyEmail() {
+  var link = document.querySelector('[data-copy-email]');
+  if (!link) return;
 
-  var statusEl = form.querySelector('.form-status');
-  var btnLabel = form.querySelector('[data-i18n="contact.send"]');
-
-  form.addEventListener('submit', function (e) {
+  link.addEventListener('click', function (e) {
     e.preventDefault();
+    var email = link.getAttribute('data-copy-email');
 
-    var btn = form.querySelector('.btn-send');
-    btn.disabled = true;
-    var origText = btnLabel.textContent;
-    btnLabel.textContent = currentLang === 'cs' ? 'Odesílám\u2026' : 'Sending\u2026';
-    statusEl.textContent = '';
-    statusEl.className = 'form-status';
-
-    var data = {
-      access_key: '87d64630-11b8-4915-8b49-17683c281164',
-      subject: 'New contact from petrzlebek.cz',
-      from_name: 'petrzlebek.cz',
-      name: form.elements.name.value,
-      email: form.elements.email.value,
-      message: form.elements.message.value
-    };
-
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    })
-    .then(function (res) { return res.json(); })
-    .then(function (result) {
-      if (result.success) {
-        statusEl.textContent = currentLang === 'cs'
-          ? 'Zpráva odeslána! Ozvu se co nejdříve.'
-          : 'Message sent! I\u2019ll get back to you soon.';
-        statusEl.className = 'form-status form-status-success';
-        form.reset();
-      } else {
-        throw new Error(result.message || 'Error');
-      }
-    })
-    .catch(function () {
-      statusEl.textContent = currentLang === 'cs'
-        ? 'Něco se pokazilo. Zkuste to znovu nebo napište přímo na email.'
-        : 'Something went wrong. Try again or email me directly.';
-      statusEl.className = 'form-status form-status-error';
-    })
-    .finally(function () {
-      btn.disabled = false;
-      btnLabel.textContent = origText;
+    copyText(email).then(function () {
+      var toast = document.getElementById('copy-toast');
+      if (!toast) return;
+      toast.textContent = currentLang === 'cs'
+        ? 'E-mail zkopírován do schránky'
+        : 'Email copied to clipboard';
+      toast.classList.add('show');
+      setTimeout(function () { toast.classList.remove('show'); }, 2500);
     });
   });
+}
+
+function copyText(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(text);
+  }
+  // Fallback for HTTP or older browsers
+  var textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textarea);
+  return Promise.resolve();
 }

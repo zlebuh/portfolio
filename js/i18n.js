@@ -4,7 +4,6 @@ var translations = {
     "nav.projects": "Projekty",
     "nav.experience": "Zkušenosti",
     "nav.about": "O mně",
-    "nav.contact": "Kontakt",
 
     // Footer
     "footer.copy": "\u00a9 2026 Petr Žlebek. Vytvořeno s péčí.",
@@ -13,9 +12,10 @@ var translations = {
     // Hero
     "hero.desc": "Softwarový inženýr, který staví produkty od začátku do konce. Od prvního prototypu po produkci — backend, frontend, mobilní aplikace, nasazení. Pomáhám startupům rychle posouvat věci vpřed a dodávat MVP, která fungují.",
     "hero.viewProjects": "Zobrazit projekty",
-    "hero.getInTouch": "Kontaktujte mě",
     "hero.cardRole": "Softwarový inženýr",
     "hero.aiNote": "Nejsem vibecoder. Mám 5+ let praxe ve vývoji. AI používám, abych extrémně zvýšil svou efektivitu — ne abych nechal celou aplikaci naslepo vygenerovat.",
+    "hero.cta": "Máte nápad na startup nebo potřebujete postavit MVP? Pojďme si promluvit.",
+    "hero.copied": "Zkopírováno!",
     "hero.yearsLabel": "Let zkušeností",
 
 
@@ -52,23 +52,9 @@ var translations = {
     // About
     "about.label": "// Osobní",
     "about.title": "Nejen práce",
-    "about.intro": "Žiji s manželkou, dcerou a naším psem v malém městě v Česku. Máme dům se zahradou a s tím i nekonečný backlog, který mě chrání před ztrátou chuti k práci v kanceláři.",
+    "about.intro": "Žiji s manželkou, dcerou a naším psem na Valašsku. Máme dům se zahradou a s tím i nekonečný backlog, který mě chrání před ztrátou chuti k práci v kanceláři.",
     "about.hobbies": "Sport byl vždycky velkou součástí mého života a jsem zarytý fanoušek fotbalového Liverpoolu — YNWA. Když zrovna nesleduji zápas nebo nesportuji, najdete mě u dobré knížky, s kytarou u táboráku nebo jak vylepšuji naši chytrou domácnost.",
 
-    // Contact
-    "contact.label": "// Pojďme si promluvit",
-    "contact.heading": "Napadlo Vás <em>něco?</em>",
-    "contact.sub": "Máte nápad na startup nebo potřebujete postavit MVP? Vezmu projekt od konceptu až po spuštění. Ozvěte se.",
-    "contact.formName": "Jméno",
-    "contact.formEmail": "E-mail",
-    "contact.formMessage": "Zpráva",
-    "contact.namePlaceholder": "Vaše jméno",
-    "contact.emailPlaceholder": "vas@email.cz",
-    "contact.messagePlaceholder": "Řekněte mi o vašem projektu\u2026",
-    "contact.send": "Odeslat zprávu",
-    "contact.sending": "Odesílám\u2026",
-    "contact.success": "Zpráva odeslána! Ozvu se co nejdříve.",
-    "contact.error": "Něco se pokazilo. Zkuste to znovu nebo napište přímo na email."
   }
 };
 
