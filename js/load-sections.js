@@ -9,3 +9,23 @@ document.querySelectorAll('[data-section]').forEach(function (el) {
       el.innerHTML = html;
     });
 });
+
+/* Hamburger menu toggle */
+(function () {
+  var hamburger = document.querySelector('.nav-hamburger');
+  var navLinks = document.querySelector('.nav-links');
+  var nav = document.querySelector('nav');
+  if (!hamburger) return;
+
+  hamburger.addEventListener('click', function () {
+    navLinks.classList.toggle('open');
+    nav.classList.toggle('open');
+  });
+
+  navLinks.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') {
+      navLinks.classList.remove('open');
+      nav.classList.remove('open');
+    }
+  });
+})();
