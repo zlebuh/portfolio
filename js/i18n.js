@@ -15,7 +15,7 @@ var translations = {
     "hero.viewProjects": "Zobrazit projekty",
     "hero.cardRole": "Softwarový inženýr",
     "hero.orNote": "Specializuji se na <strong class=\"hl\">optimalizaci, matematické modelování a efektivní plánování</strong>. Pomůžu Vám nahradit plánování excelem nebo tužkou a papírem — díky softwaru, který šetří čas i náklady.",
-    "hero.aiNote": "<strong class=\"hl\">Nejsem 'vibecoder'.</strong> Mám více než <strong class=\"hl\">5 let praxe</strong> s vývojem softwaru jak v korporátu, tak v malém startupovém týmu. AI používám, abych zvýšil svou produktivitu — ne abych nechal celou aplikaci naslepo vygenerovat.",
+    "hero.aiNote": "Mám více než <strong class=\"hl\">5 let praxe</strong> s vývojem softwaru v malém startupovém týmu, korporátu i akademickém prostředí. <strong class=\"hl\">Nejsem 'vibecoder'.</strong> AI používám, abych zvýšil svou produktivitu — ne abych nechal celou aplikaci naslepo vygenerovat.",
     "hero.cta": "Můžu Vám s něčím pomoci? Ozvěte se.",
     "hero.copied": "Zkopírováno!",
     "hero.yearsLabel": "Let zkušeností",
