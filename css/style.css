@@ -373,21 +373,28 @@ section + section { border-top: 1px solid var(--border); }
 
 .timeline { display: flex; flex-direction: column; }
 .timeline-item {
-  display: grid; grid-template-columns: 160px 1fr;
-  gap: 32px; padding: 32px 0;
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  grid-template-areas: "left company" "left right";
+  gap: 0 32px; padding: 32px 0;
   border-bottom: 1px solid var(--border);
   position: relative;
 }
+.timeline-left    { grid-area: left; display: flex; flex-direction: column; align-items: center; align-self: center; }
+.timeline-company { grid-area: company; }
+.timeline-right   { grid-area: right; }
 .timeline-item:last-child { border-bottom: none; }
+.timeline-icon {
+  color: var(--accent); margin-bottom: 6px;
+}
 .timeline-year {
   font-family: 'DM Mono', monospace;
   font-size: 12px; color: var(--muted);
-  padding-top: 4px;
 }
 .timeline-company {
   font-size: 13px; color: var(--accent);
   font-family: 'DM Mono', monospace;
-  margin-bottom: 6px;
+  margin-bottom: 6px; align-self: end;
 }
 .timeline-role {
   font-family: 'DM Serif Display', serif;
@@ -484,9 +491,11 @@ footer {
   }
 
   .timeline-item {
-    grid-template-columns: 1fr;
-    gap: 8px;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "left company" "left right";
+    gap: 4px 12px;
   }
+  .timeline-left { align-items: center; align-self: center; }
 
   footer {
     flex-direction: column;

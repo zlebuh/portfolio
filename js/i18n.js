@@ -2,7 +2,7 @@ var translations = {
   cs: {
     // Nav
     "nav.projects": "Projekty",
-    "nav.experience": "Zkušenosti",
+    "nav.experience": "Životopis",
     "nav.about": "O mně",
 
     // Footer
@@ -15,7 +15,8 @@ var translations = {
     "hero.viewProjects": "Zobrazit projekty",
     "hero.cardRole": "Softwarový inženýr",
     "hero.orNote": "Specializuji se na <strong class=\"hl\">optimalizaci, matematické modelování a efektivní plánování</strong>. Pomůžu Vám nahradit plánování excelem nebo tužkou a papírem — díky softwaru, který šetří čas i náklady.",
-    "hero.aiNote": "Mám více než <strong class=\"hl\">5 let praxe</strong> s vývojem softwaru v malém startupovém týmu, korporátu i akademickém prostředí. <strong class=\"hl\">Nejsem 'vibecoder'.</strong> AI používám, abych zvýšil svou produktivitu — ne abych nechal celou aplikaci naslepo vygenerovat.",
+    "hero.aiNote": "Mám více než <strong class=\"hl\">5 let praxe</strong> s vývojem softwaru — v malém startupovém týmu, v korporátu i v akademickém prostředí.",
+    "hero.vibeNote": "<strong class=\"hl\">Nejsem 'vibecoder'.</strong> AI používám, abych zvýšil svou produktivitu — ne abych nechal celou aplikaci naslepo vygenerovat.",
     "hero.cta": "Můžu Vám s něčím pomoci? Ozvěte se.",
     "hero.copied": "Zkopírováno!",
     "hero.yearsLabel": "Let zkušeností",
@@ -23,21 +24,29 @@ var translations = {
 
 
     // Projects
-    "projects.label": "// Vybraná práce",
+    "projects.label": "// Ukázky mé práce. U některých projektů je možné nahlédnout i do zdrojového kódu.",
     "projects.title": "Projekty",
-    "projects.placeholder": "Referenční projekty již brzy. Zůstaňte naladěni.",
+    "projects.placeholder": "Zatím tu nic není. Pracuji na přidání...",
 
     // Experience
-    "exp.label": "// Kariéra",
-    "exp.title": "Zkušenosti",
+    "exp.label": "// Chronologicky uspořádané pracovní a studijní zkušenosti včetně popisu toho, co jsem tam dělal a co jsem se naučil.",
+    "exp.title": "Životopis",
+    "exp.freelance.present": "2025 \u2014 dosud",
+    "exp.freelance.company": "Na volné noze",
+    "exp.freelance.role": "Realizace vlastních projektů",
+    "exp.freelance.desc": "Kompletní vývoj produkčního softwaru pro vlastní nápady. Mimo kódování také provoz projektů, sběr zpětné vazby od uživatelů a rozhodování o dalším směřování a produktizaci.",
+    "exp.vut.present": "2025 \u2014 dosud",
+    "exp.vut.company": "Ústav procesního inženýrství, FSI VUT",
+    "exp.vut.role": "Vývoj optimalizačních algoritmů, Full Stack Developer",
+    "exp.vut.desc": "Akademická půda. Podílení se na vývoji software pro optimalizaci plánování svozu odpadu.",
     "exp.thermofisher.present": "2023 \u2014 dosud",
     "exp.thermofisher.role": "Senior SW inženýr",
-    "exp.thermofisher.desc": "Vývoj interní aplikace pro konfiguraci digitálního dvojčete elektronového mikroskopu. Mám částečný ownership nad produktem a zároveň mentoruji juniorní vývojáře.",
-    "exp.edhouse.present": "2023 \u2014 dosud",
-    "exp.edhouse.role": "Vývojář algoritmů, Backend vývojář",
-    "exp.edhouse.desc": "Pro energetický startup jsem vyvíjel algoritmus pro optimální řízení nabíjení baterie a prodeje přetoků vzhledem k predikované spotřebě, výkonu fotovoltaické elektrárny a spotovým cenám.",
-    "exp.solvertech.role": "Vývojář algoritmů, Backend vývojář",
-    "exp.solvertech.desc": "Vývoj optimalizačních algoritmů pro úlohu Vehicle Routing Problem.",
+    "exp.thermofisher.desc": "Nadnárodní korporace. Vývoj interní aplikace pro konfiguraci digitálního dvojčete elektronového mikroskopu. Částečný ownership nad produktem. Mentoring juniorních vývojářů.",
+    "exp.edhouse.present": "2025 \u2014 dosud",
+    "exp.edhouse.role": "Vývojář matematických modelů a algoritmů",
+    "exp.edhouse.desc": "Energetický startup. Vývoj matematického modelu a algoritmu pro optimální řízení nabíjení baterie a prodeje přetoků vzhledem k predikované spotřebě, výkonu fotovoltaické elektrárny a spotovým cenám.",
+    "exp.solvertech.role": "Vývojář algoritmů, SW inženýr",
+    "exp.solvertech.desc": "Malá rodinná firma. Vývoj algoritmů pro optimalizaci rozvozu. Udržování a rozvoj uživatelské aplikace pro plánování rozvozu. Komunikace se zákazníky a sběr požadavků pro další vývoj.",
 
     // Education
     "edu.label": "// Vzdělání",
@@ -50,13 +59,13 @@ var translations = {
     "edu.bachelor.desc": "Téma bakalářské práce: Dopravní modely a jejich aplikace. Implementace algoritmů operačního výzkumu při hledání optimálního rozložení zařízení na zpracování odpadu v rámci svozové sítě.",
     "edu.grammar.school": "Gymnázium Františka Palackého Valašské Meziříčí",
     "edu.grammar.field": "Všeobecné studium",
-    "edu.grammar.desc": "Na gymnáziu jsem vždy prospěl s vyznamenáním. Už zde začala má cesta coby programátora díky volitelnému předmětu programování, ze kterého jsem nakonec i maturoval.",
+    "edu.grammar.desc": "Na gymnáziu jsem vždy prospěl s vyznamenáním. Už zde začala má cesta díky volitelnému předmětu programování, ze kterého jsem nakonec i maturoval.",
 
     // About
-    "about.label": "// Osobní",
-    "about.title": "Nejen práce",
+    "about.label": "// Nejen prací je člověk živ.",
+    "about.title": "O mně",
     "about.intro": "Žiji s manželkou, dcerou a naším psem na Valašsku. Máme dům se zahradou a s tím i nekonečný backlog, který mě chrání před ztrátou chuti k práci v kanceláři.",
-    "about.hobbies": "Sport byl vždycky velkou součástí mého života a jsem zarytý fanoušek fotbalového Liverpoolu — YNWA. Když zrovna nesleduji zápas nebo nesportuji, najdete mě u dobré knížky, s kytarou u táboráku nebo jak vylepšuji naši chytrou domácnost.",
+    "about.hobbies": "Sport byl vždycky velkou součástí mého života a jsem zarytý fanoušek fotbalového Liverpoolu. Když zrovna nesleduji zápas nebo nesportuji, najdete mě u dobré knížky, s kytarou u táboráku nebo jak vylepšuji naši chytrou domácnost.",
 
   }
 };
