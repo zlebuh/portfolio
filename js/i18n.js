@@ -11,13 +11,13 @@ var translations = {
 
     // Hero
     "hero.available": "K dispozici pro freelance projekty",
-    "hero.desc": "Jako softwarový inženýr dodávám <strong class=\"hl\">kompletní řešení</strong> — od prvního prototypu přes MVP až po produkci. Pomůžu Vašemu startupu rychle posouvat věci vpřed.",
+    "hero.desc": "Jsem softwarový inženýr, který dodává <strong class=\"hl\">kompletní řešení</strong> od prvního prototypu až po produkci. Pomáhám týmům rychle posouvat věci vpřed a dodávat funkční produkty.",
     "hero.viewProjects": "Zobrazit projekty",
     "hero.cardRole": "Softwarový inženýr",
-    "hero.orNote": "Specializuji se na <strong class=\"hl\">optimalizaci, matematické modelování a efektivní plánování</strong>. Pomůžu Vám nahradit plánování excelem nebo tužkou a papírem — díky softwaru, který šetří čas i náklady.",
-    "hero.aiNote": "Mám více než <strong class=\"hl\">5 let praxe</strong> s vývojem softwaru — v malém startupovém týmu, v korporátu i v akademickém prostředí.",
-    "hero.vibeNote": "<strong class=\"hl\">Nejsem 'vibecoder'.</strong> AI používám, abych zvýšil svou produktivitu — ne abych nechal celou aplikaci naslepo vygenerovat.",
-    "hero.cta": "Můžu Vám s něčím pomoci? Ozvěte se.",
+    "hero.orNote": "Specializuji se na <strong class=\"hl\">optimalizaci, matematické modelování a efektivní plánování</strong>. Rád nahrazuji plánování v excelu nebo na papíře softwarem, který šetří čas i náklady.",
+    "hero.aiNote": "Mám více než <strong class=\"hl\">5 let praxe</strong> s vývojem softwaru, převážně s <strong class=\"hl\">C# a .NET</strong>, v malém startupu, v korporátu i v akademickém prostředí. Mám také zkušenost s vedením juniorních kolegů.",
+    "hero.vibeNote": "<strong class=\"hl\">Nejsem 'vibecoder'.</strong> AI používám ke zvýšení produktivity, ne k naslepo vygenerované aplikaci.",
+    "hero.cta": "Hledám novou pracovní příležitost. Pokud myslíte, že bych se hodil do vašeho týmu, ozvěte se.",
     "hero.copied": "Zkopírováno!",
     "hero.yearsLabel": "Let zkušeností",
     "hero.degreeLabel": "Aplikovaná informatika",
