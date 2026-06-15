@@ -6,7 +6,7 @@ var translations = {
     "nav.about": "O mně",
 
     // Footer
-    "footer.copy": "\u00a9 2026 Petr Žlebek. Vytvořeno s péčí.",
+    "footer.copy": "\u00a9 2026 Petr Žlebek",
 
 
     // Hero
