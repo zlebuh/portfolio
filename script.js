@@ -235,5 +235,39 @@ async function loadProjects() {
   }
 }
 
+// --- Site content ------------------------------------------------------------
+
+async function loadContent() {
+  try {
+    const res = await fetch("content.md");
+    const raw = await res.text();
+    const { meta } = parseFrontmatter(raw);
+
+    if (meta.page_title) {
+      const titleEl = document.createElement("div");
+      titleEl.innerHTML = meta.page_title;
+      document.title = titleEl.textContent;
+    }
+
+    document.querySelectorAll("[data-content]").forEach((el) => {
+      const key = el.dataset.content;
+      if (meta[key] !== undefined) el.innerHTML = meta[key];
+    });
+
+    document.querySelectorAll("[data-content-href]").forEach((el) => {
+      const key = el.dataset.contentHref;
+      if (meta[key] !== undefined) el.setAttribute("href", meta[key]);
+    });
+
+    document.querySelectorAll("[data-content-aria]").forEach((el) => {
+      const key = el.dataset.contentAria;
+      if (meta[key] !== undefined) el.setAttribute("aria-label", meta[key]);
+    });
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 setupThemeToggle();
+loadContent();
 loadProjects();
