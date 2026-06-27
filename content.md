@@ -5,7 +5,7 @@ title: Softwarový inženýr s&nbsp;více než 5letou praxí
 email: pezlebek@gmail.com
 linkedin_label: linkedin.com/in/petrzlebek
 linkedin_url: https://linkedin.com/in/petrzlebek
-github_label: github.com/petrzlebek
+github_label: github.com/zlebuh
 github_url: https://github.com/zlebuh
 theme_toggle_label: Přepnout tmavý režim
 intro_heading: Projektové portfolio
