@@ -386,6 +386,19 @@ body {
   margin: 0 0 8px;
 }
 
+.project-more-content ul {
+  margin: 0 0 8px;
+  padding-left: 18px;
+}
+
+.project-more-content li {
+  margin: 0 0 4px;
+}
+
+.project-more-content li::marker {
+  color: var(--accent);
+}
+
 /* Lightbox */
 .lightbox {
   position: fixed;
