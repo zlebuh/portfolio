@@ -135,12 +135,16 @@ body {
   gap: 6px;
 }
 
-.contact a {
+.contact a,
+.project-tech a,
+.project-more-content a {
   color: var(--accent);
   text-decoration: none;
 }
 
-.contact a:hover {
+.contact a:hover,
+.project-tech a:hover,
+.project-more-content a:hover {
   text-decoration: underline;
 }
 

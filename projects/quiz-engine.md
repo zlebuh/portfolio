@@ -1,7 +1,7 @@
 ---
 title: Quiz Engine
 description: Engine pro self-hosted kvíz. Hostitel řídí hru z jedné obrazovky (notebook/projektor), hráči se připojují přes QR kód a odpovídají ze svých mobilů.
-tags: [Node.js, Express, Socket.IO, JavaScript]
+tags: [Node.js, Express, Socket.IO, JavaScript, ngrok]
 repo: https://github.com/zlebuh/quiz-engine
 screenshots:
   - assets/quiz-engine/01-host-lobby.png
@@ -16,7 +16,7 @@ screenshots:
 
 ## Technický popis
 
-Backend běží na Node.js, Express a Socket.IO. Veškerý stav hry žije v jediném in-memory objektu na serveru. *Tencí* klienti pouze zobrazují to, co jim server poslal. Hra běží jako stavový automat s fázemi: lobby → otázka → časovač → review → výsledky. Hráči se připojují skenováním QR kódu a při výpadku spojení se po návratu automaticky napojí zpět do aktuální fáze.
+Backend běží na Node.js, Express a Socket.IO. Veškerý stav hry žije v jediném in-memory objektu na serveru. *Tencí* klienti pouze zobrazují to, co jim server poslal. Hra běží jako stavový automat s fázemi: lobby → otázka → časovač → review → výsledky. Hráči se připojují skenováním QR kódu a při výpadku spojení se po návratu automaticky napojí zpět do aktuální fáze. Kromě lokální sítě lze server zpřístupnit i mimo ni přes tunel [ngrok](https://ngrok.com/).
 
 ## Více informací
 
