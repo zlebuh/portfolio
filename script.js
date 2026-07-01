@@ -73,7 +73,12 @@ function markdownToHtml(md) {
   const blocks = md.split(/\n\s*\n/);
   return blocks
     .map((block) => {
-      const lines = block.trim().split("\n");
+      const trimmed = block.trim();
+      const headingMatch = trimmed.match(/^#{2,3}\s+(.+)$/);
+      if (headingMatch) {
+        return `<h2 class="project-tech-heading">${inlineMarkdown(headingMatch[1])}</h2>`;
+      }
+      const lines = trimmed.split("\n");
       if (lines.every((l) => /^\s*-\s+/.test(l))) {
         const items = lines.map((l) => `<li>${inlineMarkdown(l.replace(/^\s*-\s+/, ""))}</li>`).join("");
         return `<ul>${items}</ul>`;
@@ -191,22 +196,35 @@ function renderProject(project, index, openLightbox) {
       <div class="project-links">${links.join("")}</div>
     </div>
     <p class="project-description">${escapeHtml(meta.description || "")}</p>
-    ${techHtml ? `<div class="project-tech">${techHtml}</div>` : ""}
-    ${tags ? `<div class="tag-list">${tags}</div>` : ""}
+    ${techHtml || tags
+      ? `<div class="project-tech-section">
+            <h5 class="project-tech-heading">Technický popis a použité technologie</h5>
+            ${techHtml ? `<div class="project-tech">${techHtml}</div>` : ""}
+            ${tags ? `<div class="tag-list">${tags}</div>` : ""}
+          </div>`
+      : ""
+    }
     ${galleryHtml}
-    ${
-      moreHtml
-        ? `<details class="project-more">
-            <summary>Zobrazit více</summary>
+    ${moreHtml
+      ? `<details class="project-more">
+            <summary><span class="project-more-label">Zobrazit detaily</span></summary>
             <div class="project-more-content">${moreHtml}</div>
           </details>`
-        : ""
+      : ""
     }
   `;
 
   article.querySelectorAll(".gallery-tile").forEach((tile) => {
     tile.addEventListener("click", () => openLightbox(screenshots, Number(tile.dataset.index)));
   });
+
+  const moreDetails = article.querySelector(".project-more");
+  if (moreDetails) {
+    const moreLabel = moreDetails.querySelector(".project-more-label");
+    moreDetails.addEventListener("toggle", () => {
+      moreLabel.textContent = moreDetails.open ? "Skrýt detaily" : "Zobrazit detaily";
+    });
+  }
 
   return article;
 }

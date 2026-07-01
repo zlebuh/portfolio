@@ -268,11 +268,28 @@ body {
   margin: 0 0 10px;
 }
 
+.project-tech-section {
+  margin: 0 0 14px;
+}
+
+.project-tech-heading {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  margin: 14px 0 6px;
+}
+
+.project-tech-section > .project-tech-heading {
+  margin-top: 0;
+}
+
 .project-tech {
   font-size: 12.5px;
   line-height: 1.5;
   color: var(--text-muted);
-  margin: 0 0 12px;
+  margin: 0 0 8px;
 }
 
 .project-tech p {
@@ -283,7 +300,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-bottom: 14px;
 }
 
 .tag {
