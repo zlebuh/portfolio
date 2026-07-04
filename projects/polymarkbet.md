@@ -12,7 +12,7 @@ screenshots:
 
 ## Technický popis
 
-Backend v **.NET 10** se skládá z API a knihoven, které zajišťují napojení na externí API, párování událostí, spouštění backtestingových simulací a persistenci dat. Administrační frontend je **React** + **TypeScript** aplikace nasazená na **Cloudflare Workers**, doplněná o malou **Node.js** službu, která streamuje průběh běžících background jobů do UI přes **WebSocket**. Celý systém je možné spouštět přes **Docker Compose**.
+Backend v **.NET 10** se skládá z API a knihoven, které zajišťují napojení na externí API, párování událostí, spouštění backtestingových simulací a persistenci dat. Administrační frontend je **React** + **TypeScript** aplikace, doplněná o malou **Node.js** službu, která streamuje průběh běžících background jobů do UI přes **WebSocket**.
 
 ## Více informací
 
