@@ -198,7 +198,7 @@ function renderProject(project, index, openLightbox) {
     <p class="project-description">${escapeHtml(meta.description || "")}</p>
     ${techHtml || tags
       ? `<div class="project-tech-section">
-            <h5 class="project-tech-heading">Technický popis a použité technologie</h5>
+            <h5 class="project-tech-heading">Použité technologie</h5>
             ${techHtml ? `<div class="project-tech">${techHtml}</div>` : ""}
             ${tags ? `<div class="tag-list">${tags}</div>` : ""}
           </div>`
