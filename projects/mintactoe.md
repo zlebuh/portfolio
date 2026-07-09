@@ -1,13 +1,13 @@
 ---
 title: MinTacToe
-description: Hra pro dva hráče, která kombinuje piškvorky a hledání min.
+description: Hra pro dva hráče, která kombinuje piškvorky s hledáním min. Hraje se lokálně i online.
 tags: [Online game, Realtime, Supabase, PostgreSQL, React, Vite, WebSocket]
 repo: https://github.com/zlebuh/mintactoe
 app: https://mines.petrzlebek.cz
 screenshots:
+  - assets/mintactoe/03-game.jpg
   - assets/mintactoe/01-menu.jpg
   - assets/mintactoe/02-lobby.jpg
-  - assets/mintactoe/03-game.jpg
 ---
 
 ## Technický popis

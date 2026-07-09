@@ -1,6 +1,6 @@
 ---
 title: Název projektu 1
-description: Stručný, srozumitelný popis toho, co projekt dělá a jaký problém řeší – napsaný tak, aby mu rozuměl i netechnický čtenář.
+description: Jedna krátká věta, kterou pochopí i netechnický čtenář. Zobrazuje se ve sbaleném stavu karty.
 tags: [.NET, C#, PostgreSQL, Docker]
 repo: https://github.com/petrzlebek
 app: https://example.com
@@ -16,8 +16,8 @@ Krátký technický souhrn architektury, klíčových rozhodnutí a implementač
 
 ## Více informací
 
-Tady může být delší, podrobnější popis projektu – například historie vzniku, výzvy, kterým jsem čelil, nebo
+Tady může být delší, podrobnější popis projektu, například historie vzniku, výzvy, kterým jsem čelil, nebo
 podrobnější rozbor architektury. Tato sekce je **volitelná** a v kartě projektu je standardně skrytá, dokud
 ji čtenář sám nerozbalí.
 
-Může obsahovat i víc odstavců, [odkazy](https://example.com) nebo zvýraznění *kurzívou*.
+Může obsahovat i víc odstavců, [odkazy](https://example.com) nebo **zvýraznění tučně**.

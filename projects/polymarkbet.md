@@ -1,7 +1,7 @@
 ---
-title: MidLine - interní nástroj
-description: Interní webová aplikace pro identifikaci výhodných rozdílů mezi kurzy sázkových kanceláří a sportovními predikčními trhy. Se startupem v pre-seed fázi MidLine spolupracuji jako freelancer. Mám plnou odpovědnost za architekturu, vývoj, nasazení i údržbu nástroje.
-tags: [.NET, C#, ASP.NET Core, Dapper, PostgreSQL, NUnit, TypeScript, React, Vite, Tailwind CSS, Cloudflare Workers, Node.js, WebSocket, Docker, GitHub Actions, Apache Parquet, Algorithmic Trading]
+title: MidLine
+description: Interní nástroj, který hledá výhodné rozdíly mezi kurzy sázkových kanceláří a predikčních trhů.
+tags: [.NET, C#, React, TypeScript, PostgreSQL, Docker, Algorithmic Trading, Cloudflare Workers]
 screenshots:
   - assets/polymarkbet/01-dashboard.png
   - assets/polymarkbet/02-fixtures.png
@@ -15,6 +15,10 @@ screenshots:
 Backend v **.NET 10** se skládá z API a knihoven, které zajišťují napojení na externí API, párování událostí, spouštění backtestingových simulací a persistenci dat. Administrační frontend je **React** + **TypeScript** aplikace, doplněná o malou **Node.js** službu, která streamuje průběh běžících background jobů do UI přes **WebSocket**.
 
 ## Více informací
+
+### Moje role
+
+Se startupem MidLine v pre-seed fázi spolupracuji jako freelancer. Mám plnou odpovědnost za architekturu, vývoj, nasazení i údržbu nástroje.
 
 ### Párování událostí
 

@@ -51,6 +51,7 @@ body {
 
 .page {
   width: 100%;
+  max-width: 1320px;
   margin: 0 auto;
   background: var(--surface);
   padding: 28px clamp(16px, 4vw, 56px) 60px;
@@ -187,21 +188,13 @@ body {
 
 /* Intro */
 .intro {
-  max-width: 900px;
-  margin: 0 auto 32px;
+  margin: 0 0 24px;
 }
 
 .intro h3 {
   font-size: 22px;
   letter-spacing: 0.02em;
   color: var(--accent);
-  margin: 0 0 8px;
-}
-
-.intro p {
-  font-size: 13px;
-  line-height: 1.55;
-  color: var(--text-muted);
   margin: 0;
 }
 
@@ -209,8 +202,20 @@ body {
 .projects {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 28px;
+}
+
+.projects.projects-columns {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.projects-col {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .projects-loading,
@@ -220,11 +225,37 @@ body {
 }
 
 .project {
-  width: 100%;
-  max-width: 760px;
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 20px 22px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.project-hero {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  overflow: hidden;
+  background: var(--border);
+}
+
+.project-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.15s;
+}
+
+.project-hero:hover img {
+  transform: scale(1.02);
+}
+
+.project-summary {
+  padding: 16px 20px;
 }
 
 .project-head {
@@ -269,10 +300,15 @@ body {
   font-size: 13px;
   line-height: 1.5;
   color: var(--text);
-  margin: 0 0 10px;
+  margin: 0;
+  min-height: 3em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
-.project-tech-section {
+.project-more-content .project-tech-section {
   margin: 0 0 14px;
 }
 
@@ -304,14 +340,15 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+  margin-top: 10px;
 }
 
 .tag {
   font-size: 10.5px;
-  border: 1px solid var(--accent);
-  color: var(--accent);
+  background: var(--border);
+  color: var(--text-muted);
   border-radius: 3px;
-  padding: 2px 7px;
+  padding: 3px 8px;
 }
 
 .gallery-collage {
@@ -319,6 +356,7 @@ body {
   flex-wrap: nowrap;
   gap: 6px;
   width: 100%;
+  margin: 0 0 14px;
 }
 
 .gallery-tile {
@@ -370,17 +408,19 @@ body {
 
 /* Collapsible "more" section */
 .project-more {
-  margin-top: 14px;
   border-top: 1px solid var(--border);
-  padding-top: 10px;
 }
 
 .project-more summary {
   cursor: pointer;
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--accent);
   list-style: none;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 20px;
 }
 
 .project-more summary::-webkit-details-marker {
@@ -399,7 +439,7 @@ body {
   font-size: 12.5px;
   line-height: 1.55;
   color: var(--text-muted);
-  margin-top: 8px;
+  padding: 4px 20px 18px;
 }
 
 .project-more-content p {
@@ -438,6 +478,9 @@ body {
   max-width: 90vw;
   max-height: 85vh;
   border-radius: 4px;
+  touch-action: none;
+  user-select: none;
+  cursor: pointer;
 }
 
 .lightbox-counter {
@@ -450,6 +493,7 @@ body {
   background: rgba(0, 0, 0, 0.5);
   padding: 4px 12px;
   border-radius: 12px;
+  z-index: 1;
 }
 
 .lightbox-close {
@@ -462,6 +506,7 @@ body {
   border: none;
   color: #fff;
   cursor: pointer;
+  z-index: 1;
 }
 
 .lightbox-nav {
@@ -476,6 +521,7 @@ body {
   height: 48px;
   border-radius: 50%;
   cursor: pointer;
+  z-index: 1;
 }
 
 .lightbox-nav:hover {

@@ -9,7 +9,6 @@ github_label: github.com/zlebuh
 github_url: https://github.com/zlebuh
 theme_toggle_label: Přepnout tmavý režim
 intro_heading: Projektové portfolio
-intro_text: Výběr projektů, na&nbsp;kterých jsem pracoval nebo je&nbsp;vyvíjím ve&nbsp;svém volném čase. U&nbsp;každého najdete krátký popis, použité technologie a&nbsp;případně odkaz na&nbsp;zdrojový kód nebo&nbsp;živou aplikaci.
 projects_loading: Načítám projekty&hellip;
 projects_error: Projekty se nepodařilo načíst.
 footer: &copy; 2026 Petr Žlebek

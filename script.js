@@ -65,7 +65,6 @@ function inlineMarkdown(text) {
   let html = escapeHtml(text);
   html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
   html = html.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
-  html = html.replace(/\*([^*]+)\*/g, "<em>$1</em>");
   return html;
 }
 
@@ -113,11 +112,33 @@ function setupLightbox() {
 
   let currentGallery = [];
   let currentIndex = 0;
+  let pz = null;
+
+  function bindZoom() {
+    if (pz) {
+      pz.dispose();
+      pz = null;
+    }
+    if (window.panzoom) {
+      pz = window.panzoom(lightboxImg, {
+        maxZoom: 4,
+        minZoom: 1,
+        bounds: true,
+        boundsPadding: 0.5,
+        zoomDoubleClickSpeed: 1,
+      });
+    }
+  }
+
+  function currentScale() {
+    return pz ? pz.getTransform().scale : 1;
+  }
 
   function show(index) {
     currentIndex = (index + currentGallery.length) % currentGallery.length;
     lightboxImg.src = currentGallery[currentIndex];
     counter.textContent = `${currentIndex + 1} / ${currentGallery.length}`;
+    bindZoom();
   }
 
   function open(gallery, index) {
@@ -129,6 +150,10 @@ function setupLightbox() {
   function close() {
     lightbox.classList.remove("open");
     lightboxImg.src = "";
+    if (pz) {
+      pz.dispose();
+      pz = null;
+    }
   }
 
   closeBtn.addEventListener("click", close);
@@ -142,6 +167,53 @@ function setupLightbox() {
     if (e.key === "Escape") close();
     if (e.key === "ArrowLeft") show(currentIndex - 1);
     if (e.key === "ArrowRight") show(currentIndex + 1);
+  });
+
+  // Desktop: click the image to advance, like the right arrow.
+  // Touch: tapping does nothing; swipe navigates, double-tap toggles zoom, pinch zooms (via panzoom).
+  let pointerStart = null;
+  let lastTapTime = 0;
+  let lastTapX = 0;
+  let lastTapY = 0;
+
+  lightboxImg.addEventListener("pointerdown", (e) => {
+    pointerStart = { x: e.clientX, y: e.clientY, t: Date.now(), type: e.pointerType };
+  });
+
+  lightboxImg.addEventListener("pointerup", (e) => {
+    if (!pointerStart) return;
+    const dx = e.clientX - pointerStart.x;
+    const dy = e.clientY - pointerStart.y;
+    const dt = Date.now() - pointerStart.t;
+    const type = pointerStart.type;
+    pointerStart = null;
+
+    if (type === "mouse") {
+      if (Math.abs(dx) < 5 && Math.abs(dy) < 5) show(currentIndex + 1);
+      return;
+    }
+
+    const isTap = Math.abs(dx) < 10 && Math.abs(dy) < 10 && dt < 300;
+    if (isTap) {
+      const now = Date.now();
+      const isDoubleTap =
+        now - lastTapTime < 300 && Math.abs(e.clientX - lastTapX) < 30 && Math.abs(e.clientY - lastTapY) < 30;
+      if (isDoubleTap && pz) {
+        const scale = currentScale();
+        const target = scale > 1.01 ? 1 : 2.5;
+        pz.smoothZoom(e.clientX, e.clientY, target / scale);
+        lastTapTime = 0;
+      } else {
+        lastTapTime = now;
+        lastTapX = e.clientX;
+        lastTapY = e.clientY;
+      }
+      return;
+    }
+
+    if (currentScale() <= 1.01 && Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      show(currentIndex + (dx < 0 ? 1 : -1));
+    }
   });
 
   return open;
@@ -159,6 +231,7 @@ function renderProject(project, index, openLightbox) {
   const { meta, body } = project;
   const sections = splitSections(body);
   const screenshots = meta.screenshots || [];
+  const hero = screenshots[0];
 
   const article = document.createElement("article");
   article.className = "project";
@@ -190,43 +263,86 @@ function renderProject(project, index, openLightbox) {
     ? `<div class="gallery-collage">${collageTiles}</div>`
     : "";
 
+  const hasMore = Boolean(techHtml || galleryHtml || moreHtml);
+
   article.innerHTML = `
-    <div class="project-head">
-      <h4 class="project-title">${escapeHtml(meta.title || "Projekt")}</h4>
-      <div class="project-links">${links.join("")}</div>
-    </div>
-    <p class="project-description">${escapeHtml(meta.description || "")}</p>
-    ${techHtml || tags
-      ? `<div class="project-tech-section">
-            <h5 class="project-tech-heading">Použité technologie</h5>
-            ${techHtml ? `<div class="project-tech">${techHtml}</div>` : ""}
-            ${tags ? `<div class="tag-list">${tags}</div>` : ""}
-          </div>`
+    ${hero
+      ? `<button type="button" class="project-hero" aria-label="Zobrazit více o projektu">
+          <img src="${hero}" alt="Náhled projektu ${escapeHtml(meta.title || "")}" loading="lazy">
+        </button>`
       : ""
     }
-    ${galleryHtml}
-    ${moreHtml
+    <div class="project-summary">
+      <div class="project-head">
+        <h4 class="project-title">${escapeHtml(meta.title || "Projekt")}</h4>
+        <div class="project-links">${links.join("")}</div>
+      </div>
+      <p class="project-description">${escapeHtml(meta.description || "")}</p>
+      ${tags ? `<div class="tag-list">${tags}</div>` : ""}
+    </div>
+    ${hasMore
       ? `<details class="project-more">
-            <summary><span class="project-more-label">Zobrazit detaily</span></summary>
-            <div class="project-more-content">${moreHtml}</div>
+            <summary><span class="project-more-label">Zobrazit více</span></summary>
+            <div class="project-more-content">
+              ${techHtml
+                ? `<div class="project-tech-section">
+                      <h5 class="project-tech-heading">Použité technologie</h5>
+                      <div class="project-tech">${techHtml}</div>
+                    </div>`
+                : ""
+              }
+              ${galleryHtml}
+              ${moreHtml}
+            </div>
           </details>`
       : ""
     }
   `;
 
+  const moreDetails = article.querySelector(".project-more");
+
+  const heroBtn = article.querySelector(".project-hero");
+  if (heroBtn) {
+    heroBtn.addEventListener("click", () => {
+      if (moreDetails) moreDetails.open = !moreDetails.open;
+    });
+  }
+
   article.querySelectorAll(".gallery-tile").forEach((tile) => {
     tile.addEventListener("click", () => openLightbox(screenshots, Number(tile.dataset.index)));
   });
 
-  const moreDetails = article.querySelector(".project-more");
   if (moreDetails) {
     const moreLabel = moreDetails.querySelector(".project-more-label");
     moreDetails.addEventListener("toggle", () => {
-      moreLabel.textContent = moreDetails.open ? "Skrýt detaily" : "Zobrazit detaily";
+      moreLabel.textContent = moreDetails.open ? "Skrýt" : "Zobrazit více";
     });
   }
 
   return article;
+}
+
+const WIDE_QUERY = "(min-width: 881px)";
+
+// Splits articles into two independent columns (alternating) so expanding a
+// card in one column never shifts the vertical position of cards in the other.
+function layoutProjects(container, articles) {
+  const isWide = window.matchMedia(WIDE_QUERY).matches;
+  container.innerHTML = "";
+  container.classList.toggle("projects-columns", isWide);
+
+  if (!isWide) {
+    articles.forEach((a) => container.appendChild(a));
+    return;
+  }
+
+  const col1 = document.createElement("div");
+  col1.className = "projects-col";
+  const col2 = document.createElement("div");
+  col2.className = "projects-col";
+  articles.forEach((a, i) => (i % 2 === 0 ? col1 : col2).appendChild(a));
+  container.appendChild(col1);
+  container.appendChild(col2);
 }
 
 async function loadProjects() {
@@ -245,8 +361,17 @@ async function loadProjects() {
       })
     );
 
-    container.innerHTML = "";
-    projects.forEach((project, i) => container.appendChild(renderProject(project, i, openLightbox)));
+    const articles = projects.map((project, i) => renderProject(project, i, openLightbox));
+    layoutProjects(container, articles);
+
+    let wasWide = window.matchMedia(WIDE_QUERY).matches;
+    window.addEventListener("resize", () => {
+      const isWide = window.matchMedia(WIDE_QUERY).matches;
+      if (isWide !== wasWide) {
+        wasWide = isWide;
+        layoutProjects(container, articles);
+      }
+    });
   } catch (err) {
     container.innerHTML = '<p class="projects-error">Projekty se nepodařilo načíst.</p>';
     console.error(err);
