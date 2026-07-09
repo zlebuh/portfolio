@@ -112,33 +112,11 @@ function setupLightbox() {
 
   let currentGallery = [];
   let currentIndex = 0;
-  let pz = null;
-
-  function bindZoom() {
-    if (pz) {
-      pz.dispose();
-      pz = null;
-    }
-    if (window.panzoom) {
-      pz = window.panzoom(lightboxImg, {
-        maxZoom: 4,
-        minZoom: 1,
-        bounds: true,
-        boundsPadding: 0.5,
-        zoomDoubleClickSpeed: 1,
-      });
-    }
-  }
-
-  function currentScale() {
-    return pz ? pz.getTransform().scale : 1;
-  }
 
   function show(index) {
     currentIndex = (index + currentGallery.length) % currentGallery.length;
     lightboxImg.src = currentGallery[currentIndex];
     counter.textContent = `${currentIndex + 1} / ${currentGallery.length}`;
-    bindZoom();
   }
 
   function open(gallery, index) {
@@ -150,10 +128,6 @@ function setupLightbox() {
   function close() {
     lightbox.classList.remove("open");
     lightboxImg.src = "";
-    if (pz) {
-      pz.dispose();
-      pz = null;
-    }
   }
 
   closeBtn.addEventListener("click", close);
@@ -162,58 +136,12 @@ function setupLightbox() {
   });
   prevBtn.addEventListener("click", () => show(currentIndex - 1));
   nextBtn.addEventListener("click", () => show(currentIndex + 1));
+  lightboxImg.addEventListener("click", () => show(currentIndex + 1));
   document.addEventListener("keydown", (e) => {
     if (!lightbox.classList.contains("open")) return;
     if (e.key === "Escape") close();
     if (e.key === "ArrowLeft") show(currentIndex - 1);
     if (e.key === "ArrowRight") show(currentIndex + 1);
-  });
-
-  // Desktop: click the image to advance, like the right arrow.
-  // Touch: tapping does nothing; swipe navigates, double-tap toggles zoom, pinch zooms (via panzoom).
-  let pointerStart = null;
-  let lastTapTime = 0;
-  let lastTapX = 0;
-  let lastTapY = 0;
-
-  lightboxImg.addEventListener("pointerdown", (e) => {
-    pointerStart = { x: e.clientX, y: e.clientY, t: Date.now(), type: e.pointerType };
-  });
-
-  lightboxImg.addEventListener("pointerup", (e) => {
-    if (!pointerStart) return;
-    const dx = e.clientX - pointerStart.x;
-    const dy = e.clientY - pointerStart.y;
-    const dt = Date.now() - pointerStart.t;
-    const type = pointerStart.type;
-    pointerStart = null;
-
-    if (type === "mouse") {
-      if (Math.abs(dx) < 5 && Math.abs(dy) < 5) show(currentIndex + 1);
-      return;
-    }
-
-    const isTap = Math.abs(dx) < 10 && Math.abs(dy) < 10 && dt < 300;
-    if (isTap) {
-      const now = Date.now();
-      const isDoubleTap =
-        now - lastTapTime < 300 && Math.abs(e.clientX - lastTapX) < 30 && Math.abs(e.clientY - lastTapY) < 30;
-      if (isDoubleTap && pz) {
-        const scale = currentScale();
-        const target = scale > 1.01 ? 1 : 2.5;
-        pz.smoothZoom(e.clientX, e.clientY, target / scale);
-        lastTapTime = 0;
-      } else {
-        lastTapTime = now;
-        lastTapX = e.clientX;
-        lastTapY = e.clientY;
-      }
-      return;
-    }
-
-    if (currentScale() <= 1.01 && Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-      show(currentIndex + (dx < 0 ? 1 : -1));
-    }
   });
 
   return open;
@@ -252,7 +180,7 @@ function renderProject(project, index, openLightbox) {
   const collageTiles = collageShots
     .map((src, i) => {
       const isLastVisible = i === collageShots.length - 1 && remaining > 0;
-      return `<button type="button" class="gallery-tile" data-index="${i}" aria-label="Zobrazit screenshot ${i + 1} z ${screenshots.length}">
+      return `<button type="button" class="gallery-tile" data-index="${i}" aria-label="Zobrazit screenshot ${i + 1} z&nbsp;${screenshots.length}">
         <img src="${src}" alt="Náhled ${i + 1}" loading="lazy">
         ${isLastVisible ? `<span class="gallery-more">+${remaining}</span>` : ""}
       </button>`;
@@ -267,9 +195,9 @@ function renderProject(project, index, openLightbox) {
 
   article.innerHTML = `
     ${hero
-      ? `<button type="button" class="project-hero" aria-label="Zobrazit více o projektu">
+      ? `<div class="project-hero">
           <img src="${hero}" alt="Náhled projektu ${escapeHtml(meta.title || "")}" loading="lazy">
-        </button>`
+        </div>`
       : ""
     }
     <div class="project-summary">
@@ -300,13 +228,6 @@ function renderProject(project, index, openLightbox) {
   `;
 
   const moreDetails = article.querySelector(".project-more");
-
-  const heroBtn = article.querySelector(".project-hero");
-  if (heroBtn) {
-    heroBtn.addEventListener("click", () => {
-      if (moreDetails) moreDetails.open = !moreDetails.open;
-    });
-  }
 
   article.querySelectorAll(".gallery-tile").forEach((tile) => {
     tile.addEventListener("click", () => openLightbox(screenshots, Number(tile.dataset.index)));

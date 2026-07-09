@@ -1,7 +1,7 @@
 ---
 page_title: Petr Žlebek &middot; Projektové portfolio
 name: Petr Žlebek
-title: Softwarový inženýr s&nbsp;více než 5letou praxí
+title: Softwarový inženýr s&nbsp;více než pěti lety praxe
 email: pezlebek@gmail.com
 linkedin_label: linkedin.com/in/petrzlebek
 linkedin_url: https://linkedin.com/in/petrzlebek
