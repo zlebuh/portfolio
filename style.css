@@ -209,6 +209,15 @@ body {
   align-items: flex-start;
 }
 
+/* Static markup ships pre-split into two columns; without JS to re-flatten
+   it on narrow viewports, at least stack the columns instead of squeezing
+   them side by side. */
+@media (max-width: 880px) {
+  .projects.projects-columns {
+    flex-direction: column;
+  }
+}
+
 .projects-col {
   display: flex;
   flex-direction: column;
