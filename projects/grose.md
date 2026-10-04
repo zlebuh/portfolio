@@ -13,30 +13,18 @@ screenshots:
 
 ## Technický popis
 
-Backend je kompletně na **Supabase**: Postgres s **Row Level Security**, PostgREST pro všechno CRUD a jedna Edge Function, která přijímá webhook s přeposlanou bankovní notifikací, bezpečně ověří jeho podpis a e-mail rozparsuje na transakci. Veškerá doménová logika — párování pohybů do transakcí, přepočty zůstatků, návrhy kategorií, sloučení a rozdělení transakcí, výpočet rozpočtů — běží přímo v databázi jako triggery, funkce a pohledy, ne v aplikačním kódu. Frontend je **React** + **TypeScript** (Vite, TanStack Query, react-i18next), mobile-first a napojený přes tenkou servisní vrstvu, díky které jde libovolná část UI otestovat proti falešné implementaci bez databáze.
+Backend běží kompletně na **Supabase**: Postgres s **Row Level Security**, PostgREST pro CRUD operace a jedna Edge Function, která zpracovává příchozí bankovní e-maily. Klíčová logika (třídění transakcí, přepočty zůstatků, rozpočty) žije přímo v databázi jako triggery a funkce, ne v aplikačním kódu. Frontend je **React** + **TypeScript** (Vite, TanStack Query), mobile-first.
 
 ## Více informací
 
 ### Moje role
 
-Vlastní nápad i kompletní realizace pro mou rodinu — datový model, bezpečnost, parsování bankovních e-mailů, celé UI i nasazení.
+Vlastní nápad i kompletní realizace pro mou rodinu: datový model, bezpečnost, parsování bankovních e-mailů, celé UI i nasazení.
 
-### Synchronizace z e-mailu, ne z API banky
+### Co aplikace umí
 
-Česká banka rodiny nemá veřejné API pro retailové účty, takže Groše čte vlastní bankovní notifikační e-maily přeposlané přes Gmail filtr. Edge Function ověří podpis webhooku, e-mail stáhne a předá parseru, který z HTML vytáhne částku, měnu, protistranu i symboly platby — bez jediného regulárního výrazu s nelineární složitostí, aby ani uměle poškozený e-mail nemohl zaseknout zpracování. Výsledkem je jeden řádek v tabulce pohybů, idempotentně podle ID zprávy, takže opakované doručení stejného e-mailu nikdy nevytvoří duplicitní pohyb.
+Groše si sama stahuje bankovní e-maily a nově příchozí platby automaticky roztřídí do kategorií podle dřívějších rozhodnutí. Hlídá rozpočty podle kategorií, upozorní na převody mezi vlastními účty a na jednom místě ukáže zůstatky a historii všech účtů.
 
-### Databáze jako zdroj pravdy
+### Kvalita a nasazení
 
-Skupina pohybů, která tvoří jednu transakci, její měna, datum i zůstatek se nepočítají v aplikaci, ale triggery přímo v Postgresu — stejně jako slučování a rozdělování transakcí, které běží jako atomické RPC funkce s vlastním zamykacím protokolem, aby souběžné úpravy nikdy nenechaly data v nekonzistentním stavu. Přes 50 pgTAP testů pokrývá databázová pravidla včetně souběžnosti (dvě reálná paralelní spojení záměrně vyvolávají deadlock a test ověří, že se obě strany bezpečně vzpamatují) a vlastní skript ověřuje, že pozdější migrace správně přepočítá i existující řádky.
-
-### Návrhy kategorií a rozpoznávání převodů
-
-Nad "známými" protiúčty a obchodníky běží enginu, který transakcím sám navrhuje kategorii a štítek podle dřívějších rozhodnutí uživatele — návrh ale nikdy nepřepíše to, co uživatel již jednou potvrdil. Převody mezi vlastními účty se nikdy neslučují automaticky; databáze jen nabídne pár kandidátů se shodnou částkou a časem a uživatel slučení potvrdí jedním tlačítkem.
-
-### Rozpočty a test pokrytí
-
-Rozpočet je definice s jednou částkou, která platí pro všechna kalendářní období zpětně i dopředu — žádná tabulka "rozpočet pro březen 2026" neexistuje, vše se počítá za běhu z transakcí. Projekt má přes 90% pokrytí testy u klíčové logiky (parser, ingestování, peněžní výpočty), end-to-end scénáře v Playwrightu pro mobilní i desktopové rozlišení a mutační testování kritických částí (peníze, bezpečnost, databázová pravidla).
-
-### Nasazení
-
-Databáze, Edge Function a frontend se nasazují automaticky při změně na hlavní větvi přes GitHub Actions: nejdřív běží celá testovací sada proti reálné lokální instanci Supabase, teprve pak jde nasazení na produkční Supabase projekt a frontend na Cloudflare Workers.
+Projekt má přes 90% pokrytí testy (jednotkové, databázové i end-to-end v Playwrightu), včetně testů proti souběžným zápisům do databáze. Nasazení na produkci běží automaticky přes GitHub Actions po každé změně na hlavní větvi, vždy až po úspěšném proběhnutí celé testovací sady.
