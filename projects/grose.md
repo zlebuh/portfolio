@@ -1,7 +1,7 @@
 ---
 title: Groše
-description: Soukromá rodinná rozpočtová aplikace, která si bankovní výpisy stahuje sama z e-mailu, transakce automaticky třídí do kategorií a hlídá rozpočty i zůstatky účtů.
-tags: [Supabase, PostgreSQL, pgTAP, React, TypeScript, Vite, Edge Functions, Row Level Security, Playwright, Cloudflare Workers]
+description: Rodinná rozpočtová aplikace, která si bankovní platby stahuje a třídí sama, přímo z e-mailu.
+tags: [Supabase, PostgreSQL, React, TypeScript, Vite, Edge Functions, Row Level Security, Cloudflare Workers]
 screenshots:
   - assets/grose/01-transactions.png
   - assets/grose/03-accounts.png
