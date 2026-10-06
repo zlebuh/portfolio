@@ -95,7 +95,6 @@ function renderProject(project, projectIndex) {
   const { meta, body } = project;
   const sections = splitSections(body);
   const screenshots = meta.screenshots || [];
-  const hero = screenshots[0];
 
   const links = [];
   if (meta.repo) links.push(`<a href="${meta.repo}" target="_blank" rel="noopener">${REPO_ICON}Repozitář</a>`);
@@ -106,7 +105,7 @@ function renderProject(project, projectIndex) {
   const techHtml = sections["Technický popis"] ? markdownToHtml(sections["Technický popis"]) : "";
   const moreHtml = sections["Více informací"] ? markdownToHtml(sections["Více informací"]) : "";
 
-  const COLLAGE_LIMIT = 3;
+  const COLLAGE_LIMIT = 4;
   const collageShots = screenshots.slice(0, COLLAGE_LIMIT);
   const remaining = screenshots.length - collageShots.length;
 
@@ -124,23 +123,16 @@ function renderProject(project, projectIndex) {
     ? `<div class="gallery-collage" data-screenshots='${JSON.stringify(screenshots)}'>${collageTiles}</div>`
     : "";
 
-  const hasMore = Boolean(techHtml || galleryHtml || moreHtml);
+  const hasMore = Boolean(techHtml || moreHtml);
 
   return `<article class="project" data-index="${projectIndex}">
-    ${hero
-      ? `<div class="project-hero">
-          <img src="${hero}" alt="Náhled projektu ${escapeHtml(meta.title || "")}" loading="lazy">
-        </div>`
-      : ""
-    }
-    <div class="project-summary">
-      <div class="project-head">
-        <h4 class="project-title">${escapeHtml(meta.title || "Projekt")}</h4>
-        <div class="project-links">${links.join("")}</div>
-      </div>
-      <p class="project-description">${escapeHtml(meta.description || "")}</p>
-      ${tags ? `<div class="tag-list">${tags}</div>` : ""}
+    <div class="project-head">
+      <h4 class="project-title">${escapeHtml(meta.title || "Projekt")}</h4>
+      <div class="project-links">${links.join("")}</div>
     </div>
+    <p class="project-description">${escapeHtml(meta.description || "")}</p>
+    ${tags ? `<div class="tag-list">${tags}</div>` : ""}
+    ${galleryHtml}
     ${hasMore
       ? `<details class="project-more">
             <summary><span class="project-more-label">Zobrazit více</span></summary>
@@ -152,23 +144,12 @@ function renderProject(project, projectIndex) {
                     </div>`
                 : ""
               }
-              ${galleryHtml}
               ${moreHtml}
             </div>
           </details>`
       : ""
     }
   </article>`;
-}
-
-// Splits rendered article strings into the two-column structure the browser
-// otherwise builds at runtime (see layoutProjects in script.js), so the
-// desktop-width layout is present by default in the static HTML.
-function renderProjectsColumns(articlesHtml) {
-  const col1 = [];
-  const col2 = [];
-  articlesHtml.forEach((html, i) => (i % 2 === 0 ? col1 : col2).push(html));
-  return `<div class="projects-col">${col1.join("\n")}</div><div class="projects-col">${col2.join("\n")}</div>`;
 }
 
 module.exports = {
@@ -178,5 +159,4 @@ module.exports = {
   markdownToHtml,
   splitSections,
   renderProject,
-  renderProjectsColumns,
 };

@@ -85,52 +85,7 @@ function setupMoreToggles() {
   });
 }
 
-// --- Responsive two-column layout -------------------------------------------
-// The static HTML already ships in the wide, two-column arrangement. This
-// only re-flattens/rebuilds it when the viewport doesn't match that.
-
-const WIDE_QUERY = "(min-width: 881px)";
-
-function layoutProjects(container) {
-  const articles = Array.from(container.querySelectorAll(".project")).sort(
-    (a, b) => Number(a.dataset.index) - Number(b.dataset.index)
-  );
-  const isWide = window.matchMedia(WIDE_QUERY).matches;
-  container.classList.toggle("projects-columns", isWide);
-  container.querySelectorAll(".projects-col").forEach((col) => col.remove());
-
-  if (!isWide) {
-    articles.forEach((a) => container.appendChild(a));
-    return;
-  }
-
-  const col1 = document.createElement("div");
-  col1.className = "projects-col";
-  const col2 = document.createElement("div");
-  col2.className = "projects-col";
-  articles.forEach((a, i) => (i % 2 === 0 ? col1 : col2).appendChild(a));
-  container.appendChild(col1);
-  container.appendChild(col2);
-}
-
-function setupResponsiveProjects() {
-  const container = document.getElementById("projects");
-  if (!container) return;
-
-  let wasWide = window.matchMedia(WIDE_QUERY).matches;
-  layoutProjects(container); // normalize for the current viewport on load
-
-  window.addEventListener("resize", () => {
-    const isWide = window.matchMedia(WIDE_QUERY).matches;
-    if (isWide !== wasWide) {
-      wasWide = isWide;
-      layoutProjects(container);
-    }
-  });
-}
-
 setupThemeToggle();
 const openLightbox = setupLightbox();
 setupGalleries(openLightbox);
 setupMoreToggles();
-setupResponsiveProjects();

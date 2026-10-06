@@ -5,7 +5,8 @@
 
 const fs = require("fs");
 const path = require("path");
-const { parseFrontmatter, renderProject, renderProjectsColumns } = require("./render");
+const crypto = require("crypto");
+const { parseFrontmatter, renderProject } = require("./render");
 
 const ROOT = path.resolve(__dirname, "..");
 const DIST = path.join(ROOT, "dist");
@@ -18,14 +19,13 @@ function readMeta(relPath) {
 function renderProjectsSection() {
   const files = JSON.parse(fs.readFileSync(path.join(ROOT, "projects/index.json"), "utf8"));
   const projects = files.map((file) => readMeta(`projects/${file}`));
-  const articles = projects.map((project, i) => renderProject(project, i));
-  return renderProjectsColumns(articles);
+  return projects.map((project, i) => renderProject(project, i)).join("\n");
 }
 
-function injectProjectsSection(html, columnsHtml) {
+function injectProjectsSection(html, articlesHtml) {
   return html.replace(
     /<section id="projects" class="projects">[\s\S]*?<\/section>/,
-    `<section id="projects" class="projects projects-columns">${columnsHtml}</section>`
+    `<section id="projects" class="projects">${articlesHtml}</section>`
   );
 }
 
@@ -62,6 +62,16 @@ function copyStaticAssets() {
   }
 }
 
+// Appends a content hash to style.css/script.js references (style.css?v=abcd1234)
+// so a rebuild always busts the browser cache instead of silently serving a
+// stale stylesheet/script from a previous visit.
+function injectCacheBust(html) {
+  return html.replace(/(href|src)="(style\.css|script\.js)"/g, (match, attr, file) => {
+    const hash = crypto.createHash("md5").update(fs.readFileSync(path.join(ROOT, file))).digest("hex").slice(0, 8);
+    return `${attr}="${file}?v=${hash}"`;
+  });
+}
+
 function build() {
   fs.rmSync(DIST, { recursive: true, force: true });
   fs.mkdirSync(DIST, { recursive: true });
@@ -74,6 +84,7 @@ function build() {
   html = injectDataContent(html, meta);
   html = injectDataAttr(html, "data-content-href", "href", meta);
   html = injectDataAttr(html, "data-content-aria", "aria-label", meta);
+  html = injectCacheBust(html);
 
   fs.writeFileSync(path.join(DIST, "index.html"), html);
   copyStaticAssets();

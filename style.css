@@ -22,6 +22,7 @@
 :root {
   --accent: #1f5a3f;
   --surface: #ffffff;
+  --card-bg: #f8faf9;
   --text: #2b2b2b;
   --text-muted: #555;
   --border: #dde3ea;
@@ -30,6 +31,7 @@
 [data-theme="dark"] {
   --accent: #4caf83;
   --surface: #1d2125;
+  --card-bg: #282e33;
   --text: #e7e9ea;
   --text-muted: #a3a9ad;
   --border: #30363b;
@@ -49,7 +51,7 @@ body {
 
 .page {
   width: 100%;
-  max-width: 1320px;
+  max-width: 860px;
   margin: 0 auto;
   background: var(--surface);
   padding: 28px clamp(16px, 4vw, 56px) 60px;
@@ -187,13 +189,16 @@ body {
 
 /* Intro */
 .intro {
-  margin: 0 0 24px;
+  margin: 0 0 18px;
 }
 
 .intro h3 {
-  font-size: 22px;
-  letter-spacing: 0.02em;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 5px;
   margin: 0;
 }
 
@@ -201,29 +206,7 @@ body {
 .projects {
   display: flex;
   flex-direction: column;
-  gap: 28px;
-}
-
-.projects.projects-columns {
-  flex-direction: row;
-  align-items: flex-start;
-}
-
-/* Static markup ships pre-split into two columns; without JS to re-flatten
-   it on narrow viewports, at least stack the columns instead of squeezing
-   them side by side. */
-@media (max-width: 880px) {
-  .projects.projects-columns {
-    flex-direction: column;
-  }
-}
-
-.projects-col {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  flex: 1 1 0;
-  min-width: 0;
+  gap: 20px;
 }
 
 .projects-loading,
@@ -233,33 +216,8 @@ body {
 }
 
 .project {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
-  transition: border-color 0.15s;
-}
-
-.project:hover {
-  border-color: var(--accent);
-}
-
-.project-hero {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  background: var(--border);
-}
-
-.project-hero img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.project-summary {
-  padding: 16px 20px;
+  background: var(--card-bg);
+  padding: 22px 24px;
 }
 
 .project-head {
@@ -272,7 +230,7 @@ body {
 }
 
 .project-title {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--accent);
   margin: 0;
@@ -280,8 +238,9 @@ body {
 
 .project-links {
   display: flex;
-  gap: 12px;
-  font-size: 12px;
+  gap: 10px;
+  font-size: 11px;
+  flex-shrink: 0;
 }
 
 .project-links a {
@@ -291,8 +250,8 @@ body {
   color: var(--accent);
   text-decoration: none;
   border: 1px solid var(--accent);
-  border-radius: 4px;
-  padding: 3px 9px;
+  border-radius: 3px;
+  padding: 2px 8px;
 }
 
 .project-links a:hover {
@@ -304,12 +263,7 @@ body {
   font-size: 13px;
   line-height: 1.5;
   color: var(--text);
-  margin: 0;
-  min-height: 3em;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
+  margin: 0 0 10px;
 }
 
 .project-more-content .project-tech-section {
@@ -344,15 +298,16 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 10px;
+  margin: 0 0 14px;
 }
 
 .tag {
   font-size: 10.5px;
-  background: var(--border);
+  background: transparent;
   color: var(--text-muted);
+  border: 1px solid var(--border);
   border-radius: 3px;
-  padding: 3px 8px;
+  padding: 2px 8px;
 }
 
 .gallery-collage {
@@ -360,7 +315,7 @@ body {
   flex-wrap: nowrap;
   gap: 6px;
   width: 100%;
-  margin: 0 0 14px;
+  margin: 0 0 4px;
 }
 
 .gallery-tile {
@@ -368,12 +323,12 @@ body {
   display: block;
   flex: 1 1 0;
   min-width: 0;
-  height: 140px;
+  height: 120px;
   border: none;
   padding: 0;
   cursor: pointer;
   overflow: hidden;
-  border-radius: 6px;
+  border-radius: 3px;
 }
 
 .gallery-tile img {
@@ -382,13 +337,12 @@ body {
   object-fit: cover;
   display: block;
   border: 1px solid var(--border);
-  border-radius: 6px;
-  transition: transform 0.15s;
+  border-radius: 3px;
+  transition: border-color 0.15s;
 }
 
 .gallery-tile:hover img {
-  transform: scale(1.04);
-  filter: brightness(0.94);
+  border-color: var(--accent);
 }
 
 .gallery-tile .gallery-more {
@@ -401,31 +355,31 @@ body {
   color: #fff;
   font-size: 18px;
   font-weight: 600;
-  border-radius: 6px;
+  border-radius: 3px;
 }
 
 @media (max-width: 480px) {
   .gallery-tile {
-    height: 90px;
+    height: 80px;
   }
 }
 
 /* Collapsible "more" section */
 .project-more {
   border-top: 1px solid var(--border);
+  margin-top: 14px;
 }
 
 .project-more summary {
   cursor: pointer;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
   color: var(--accent);
   list-style: none;
   display: flex;
   align-items: center;
   gap: 8px;
-  min-height: 44px;
-  padding: 0 20px;
+  min-height: 40px;
 }
 
 .project-more summary::-webkit-details-marker {
@@ -444,7 +398,7 @@ body {
   font-size: 12.5px;
   line-height: 1.55;
   color: var(--text-muted);
-  padding: 4px 20px 18px;
+  padding: 4px 0 4px;
 }
 
 .project-more-content p {
