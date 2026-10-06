@@ -247,9 +247,8 @@ body {
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  text-align: center;
   color: var(--accent);
-  border-bottom: 1px solid var(--accent);
-  padding-bottom: 5px;
   margin: 0;
 }
 
