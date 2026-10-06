@@ -107,11 +107,26 @@ body {
 }
 
 .name-block h2 {
-  margin: 4px 0 0;
-  font-size: 14px;
+  margin: 2px 0 0;
+  font-weight: 500;
+  overflow-wrap: break-word;
+}
+
+.role-label {
+  display: block;
+  font-size: 11px;
   font-weight: 500;
   color: var(--text-muted);
-  overflow-wrap: break-word;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.tagline {
+  display: block;
+  margin-top: 2px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
 }
 
 .contact-row {
@@ -155,6 +170,42 @@ body {
   height: 13px;
   color: var(--accent);
   flex-shrink: 0;
+}
+
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.copy-btn:hover {
+  color: var(--accent);
+}
+
+.copy-icon {
+  width: 12px;
+  height: 12px;
+}
+
+.copy-btn .icon-copied {
+  display: none;
+  color: var(--accent);
+}
+
+.copy-btn.copied .icon-copy {
+  display: none;
+}
+
+.copy-btn.copied .icon-copied {
+  display: block;
 }
 
 .theme-toggle {

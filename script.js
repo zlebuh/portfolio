@@ -20,6 +20,24 @@ function setupThemeToggle() {
   });
 }
 
+// --- Copy email -------------------------------------------------------------
+
+function setupCopyEmail() {
+  const btn = document.getElementById("copy-email");
+  const emailEl = document.getElementById("email-value");
+  if (!btn || !emailEl) return;
+
+  btn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(emailEl.textContent.trim());
+      btn.classList.add("copied");
+      setTimeout(() => btn.classList.remove("copied"), 1500);
+    } catch (err) {
+      // Clipboard API unavailable (e.g. insecure context) — nothing to fall back to.
+    }
+  });
+}
+
 // --- Lightbox ---------------------------------------------------------------
 
 function setupLightbox() {
@@ -86,6 +104,7 @@ function setupMoreToggles() {
 }
 
 setupThemeToggle();
+setupCopyEmail();
 const openLightbox = setupLightbox();
 setupGalleries(openLightbox);
 setupMoreToggles();
