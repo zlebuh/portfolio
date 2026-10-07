@@ -2,7 +2,7 @@
 page_title: Petr Žlebek &middot; Projektové portfolio
 name: Petr Žlebek
 role_label: Softwarový inženýr
-tagline: Dotáhnu software od&nbsp;nápadu až&nbsp;do&nbsp;produkce.
+tagline: Dotáhnu projekt od&nbsp;nápadu až&nbsp;do&nbsp;produkce.
 email: pezlebek@gmail.com
 copy_email_label: Zkopírovat e-mail
 linkedin_label: linkedin.com/in/petrzlebek
